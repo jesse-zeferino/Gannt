@@ -1,0 +1,99 @@
+<div>
+  <div style="display: flex;
+  justify-content: space-between; font-size: 11px; font-family: 'Montserrat', sans-serif;
+    color: #828282; border: 1px solid #ddd; padding: 7px; font-weight: 600;"  >
+    <div >
+      <span nz-icon nzType="plus" nzTheme="outline" style="font-size: 20px; color: #4F5479;"></span>
+        <span style="font-size: 20px; color: #51BB83;" > {{tareasNuevas}}</span>
+       <span>{{ ' TAREAS NUEVAS'  | uppercase }}</span>
+    </div>
+ 
+ 
+    <div>
+      <span nz-icon nzType="user" nzTheme="outline" style="font-size: 20px; color: #4F5479;"></span>
+        <span  style="font-size: 20px; color: #51BB83;">{{tareasAsignadas}} </span>
+        <span>{{ ' TAREAS ASIGNADAS'  | uppercase }}</span>
+    </div>
+ 
+ 
+    <div>
+      <span nz-icon nzType="field-time" nzTheme="outline" style="font-size: 20px; color: #4F5479;"></span>
+        <span style="font-size: 20px; color: #51BB83;" > {{tareasProgreso}}</span>
+        <span>{{ ' TAREAS EN CURSO'  | uppercase }}</span>
+    </div>
+ 
+ 
+    <div>
+      <span nz-icon nzType="carry-out" nzTheme="outline" style="font-size: 20px; color: #4F5479;"></span>
+        <span style="font-size: 20px; color: #51BB83;" > {{tareasResueltas}}</span>
+        <span>{{' TAREAS RESUELTAS' | uppercase }}</span>
+    </div>
+ </div>
+
+<dx-gantt
+id="gantt"
+   taskListWidth="350"
+   scaleType="hours"
+   height="100%"
+   [elementAttr]="{ id: 'elementId', class: 'class-name' }"
+   (onTaskEditDialogShowing)="onTaskEditDialogShowing($event)"
+   (onTaskDeleted)="onTaskDeleted($event)"
+   (onTaskDeleting)="onTaskDeleting($event)"
+   (onTaskInserted)="onTaskInserted($event)"
+   (onTaskInserting)="onTaskInserting($event)"
+   (onTaskMoving)="onTaskMoving($event)"
+   (onTaskUpdated)="onTaskUpdated($event)"
+   (onTaskUpdating)="onTaskUpdating($event)"
+   (onTaskDblClick)="onTaskDblClick($event)"
+   (onDependencyInserting)="onDependencyInserting($event)"
+   (onDependencyInserted)="onDependencyInserted($event)"
+   (onContextMenuPreparing)="onContextMenuPreparing($event)"
+ >
+ 
+   <dxo-tasks [dataSource]="tareas"></dxo-tasks>
+   <dxo-dependencies [dataSource]="dependencias"></dxo-dependencies>
+
+   <dxi-column
+     dataField="title"
+     caption="Proyecto"
+     [encodeHtml]="false"
+     [width]="150"
+     dataType="string"
+   ></dxi-column>
+   <dxi-column
+     dataField="estado"
+     caption="Estado"
+     [encodeHtml]="false"
+     [width]="100"
+   ></dxi-column>
+   <dxi-column
+     dataField="asignado"
+     caption="Asignado"
+     [encodeHtml]="false"
+     [width]="100"
+   ></dxi-column>
+
+
+   <dxo-toolbar>
+      
+     <dxi-item name="separator"></dxi-item>
+     <dxi-item name="collapseAll"></dxi-item>
+     <dxi-item name="expandAll"></dxi-item>
+     <dxi-item name="separator"></dxi-item>
+     <dxi-item name="addTask"></dxi-item>
+     <dxi-item name="deleteTask"></dxi-item>
+     <dxi-item name="separator"></dxi-item>
+     <dxi-item name="zoomIn"></dxi-item>
+     <dxi-item name="zoomOut"></dxi-item>
+     
+
+
+   </dxo-toolbar>
+
+
+   <dxo-validation [autoUpdateParentTasks]="true"></dxo-validation>
+
+   <dxo-editing [enabled]="true"   [allowDependencyDeleting]="false"
+   ></dxo-editing>
+
+ </dx-gantt> 

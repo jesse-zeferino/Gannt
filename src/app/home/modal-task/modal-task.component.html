@@ -1,0 +1,62 @@
+<div id="principalContainer" class="fontFamilyWS">
+    <div id="encabezado">
+        <div id="titulosModal">
+            <div class="titulo1">
+                {{'Crear Folio'}}
+            </div>
+        </div>
+        <div id="botonesPrincipales">
+            <!-- <nz-spin nzSimple [nzSize]="'small'" [nzSpinning]="cargando" style="margin-right: 15px;"></nz-spin> -->
+            <button class="botonesWS" (click)="guardarTarea()"> {{'Guardar'}}</button>
+            <button class="botonesWS" style="margin-left:13px;" (click)="cerrarModal()"> {{'Cancelar'}}
+            </button><!-- [hidden]="bloquearBotones == true"-->
+        </div>
+    </div>
+    <div class="divisonr100"></div>
+    <div class="contHorarioWS nio-scrollbar-gray divContenedorFormulario"><!--nio-scrollbar-gray -->
+        <form class="form formWS" (submit)="guardarTarea()" novalidate>
+
+            <div class="filaWS" style="padding-top: 31px;">
+                <div class="columna1">
+                    <label class="labelFormulario">{{'Nombre del folio'}}</label>
+                </div>
+                <div class="columna2 addTaskColumna2">
+                    <div class="form-group required"
+                        style="display: flex;    align-items: center;  position: relative;">
+                        <input class="imputFormulario" required [(ngModel)]="nombre" [ngModelOptions]="{standalone: true}" placeholder="">
+                    </div>
+                </div>
+            </div>
+
+            <div class="filaWS">
+                <div class="columna1">
+                    <label class="labelFormulario">{{'Descripción'}}</label>
+                </div>
+                <div class="columna2 addTaskColumna2">
+                    <div>
+                        <textarea  [(ngModel)]="descripcion" name="" id="" cols="30" class="imputFormulario"
+                        [ngModelOptions]="{standalone: true}" id="description" rows="5" required>
+                        </textarea>
+                    </div>
+                </div>
+            </div>
+
+            <div class="filaWS">
+                <div class="columna1">
+                    <label class="labelFormulario">{{'Categoría'}}</label>
+                </div>
+                <div class="columna2 addTaskColumna2">
+                    <div class="form-group required"
+                        style="display: flex;    align-items: center;  position: relative;">
+                        <ng-select [ngModelOptions]="{standalone: true}" class=" selectCategory custom " [notFoundText]="'Sin datos'"
+                            [clearAllText]="'Clear'" [items]="categoriasLista" 
+                            [(ngModel)]="categoria" bindLabel="categoriaNombre" [placeholder]="'Seleccionar'"
+                            (change)="changeCategory()" required></ng-select>
+                    </div>
+                </div>
+            </div>
+
+
+        </form>
+    </div>
+</div>

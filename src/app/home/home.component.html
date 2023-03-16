@@ -1,0 +1,82 @@
+
+
+<dx-gantt
+   taskListWidth="350"
+   scaleType="hours"
+   height="100%"
+   [elementAttr]="{ id: 'elementId', class: 'class-name' }"
+   (onTaskEditDialogShowing)="onTaskEditDialogShowing($event)"
+   (onTaskDeleted)="onTaskDeleted($event)"
+   (onTaskDeleting)="onTaskDeleting($event)"
+   (onTaskInserted)="onTaskInserted($event)"
+   (onTaskInserting)="onTaskInserting($event)"
+   (onTaskMoving)="onTaskMoving($event)"
+   (onTaskUpdated)="onTaskUpdated($event)"
+   (onTaskUpdating)="onTaskUpdating($event)"
+   (onTaskDblClick)="onTaskDblClick($event)"
+   (onDependencyInserting)="onDependencyInserting($event)"
+   (onDependencyInserted)="onDependencyInserted($event)"
+ >
+   <dxo-tasks [dataSource]="tareas"></dxo-tasks>
+
+
+    <!-- <dxo-dependencies
+     [dataSource]="dependencies"
+     keyExpr="id"
+     typeExpr="type"
+     predecessorIdExpr="predecessorId"
+     successorIdExpr="successorId"
+   >
+   </dxo-dependencies>  -->
+   <dxi-column
+     dataField="text"
+     caption="Proyecto"
+     [encodeHtml]="false"
+     [width]="150"
+     dataType="string"
+   ></dxi-column>
+   <dxi-column
+     dataField="estado"
+     caption="Estado"
+     [encodeHtml]="false"
+     [width]="100"
+   ></dxi-column>
+   <dxi-column
+     dataField="asignado"
+     caption="Asignado"
+     [encodeHtml]="false"
+     [width]="100"
+   ></dxi-column>
+
+
+   <dxo-toolbar>
+      <!-- <dxi-item
+       location="before"
+       widget="dxButton"
+       [options]="settingsButtonOptions"
+     >
+     </dxi-item>  -->
+     <dxi-item name="separator"></dxi-item>
+     <dxi-item name="collapseAll"></dxi-item>
+     <dxi-item name="expandAll"></dxi-item>
+     <dxi-item name="separator"></dxi-item>
+     <dxi-item name="addTask"></dxi-item>
+     <dxi-item name="deleteTask"></dxi-item>
+     <dxi-item name="separator"></dxi-item>
+     <dxi-item name="zoomIn"></dxi-item>
+     <dxi-item name="zoomOut"></dxi-item>
+      <!-- <dxi-item
+     widget="dxButton"
+     [options]="customButtonOptions">
+ </dxi-item>  -->
+
+
+   </dxo-toolbar>
+
+
+   <dxo-validation [autoUpdateParentTasks]="true"></dxo-validation>
+
+   <dxo-editing [enabled]="true"   [allowDependencyDeleting]="false"
+   ></dxo-editing>
+
+ </dx-gantt> 

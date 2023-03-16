@@ -1,0 +1,210 @@
+<div *ngIf="!mostrarDetailTask"  class="fontFamilyWS">
+    <div id="encabezado">
+        <div id="titulosModal">
+            <div class="titulo1">
+                {{'Crear Tarea'}}
+            </div>
+        </div>
+        <div id="botonesPrincipales">
+            
+            <button class="botonesWS"  (click)="guardarTarea()"> {{'Guardar'}}</button>
+            <button class="botonesWS" style="margin-left:13px;" (click)="cerrarModal()"> {{'Cancelar'}}
+            </button>
+        </div>
+    </div>
+    <div class="divisor100" ></div>
+    <div >
+        <form  (submit)="guardarTarea()">
+
+            <div class="filaWS" style="padding-top: 31px;">
+                <div class="labelFormulario columna1">
+                    <label >{{'Nombre de tarea'}}</label>
+                </div>
+                <div class="columna2" >
+                    <div 
+                        style="display: flex;    align-items: center;  position: relative;">
+                        <input class="imputFormulario" [(ngModel)]="nombre" [ngModelOptions]="{standalone: true}">
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="filaWS">
+                <div class="labelFormulario columna1">
+                    <label >{{'Descripción'}}</label>
+                </div>
+                <div class="columna2">
+                    <div>
+                        <textarea class="imputFormulario"  [(ngModel)]="descripcion"  cols="30" 
+                        [ngModelOptions]="{standalone: true}" id="description" rows="5">
+                        </textarea>
+                    </div>
+                   
+                </div>
+            </div>
+
+            <div class="filaWS">
+                <div class="labelFormulario columna1">
+                    <label >{{'Categoría'}}</label>
+                </div>
+                <div class="columna2">
+                    <div 
+                        style="display: flex;    align-items: center;  position: relative;">
+                        <ng-select class="selectCategory" [ngModelOptions]="{standalone: true}"  [notFoundText]="'Sin datos'"
+                            [clearAllText]="'Clear'" [items]="categoriasLista" 
+                            [(ngModel)]="categoria" bindLabel="categoriaNombre" [placeholder]="'Seleccionar'"
+                             ></ng-select>
+                    </div>
+                    
+                </div>
+            </div>
+            <br>
+
+        </form>
+    </div>
+</div>
+
+
+
+<div *ngIf="mostrarDetailTask"  class="fontFamilyWS">
+  
+    <div id="encabezado">
+        <div id="titulosModal">
+            <div class="titulo1">
+                {{'Detalle Tarea'}}
+            </div>
+           
+                    
+        </div>
+        <div id="botonesPrincipales">
+            
+            <button class="botonesWS" *ngIf="estado!='Resuelto' && estado!='Cancelado' && asignado!='Sin Asignar'" (click)="modificarTarea()"> {{'Guardar'}}</button>
+            <button class="botonesWS" style="margin-left:13px;" (click)="cerrarModal()"> {{'Cancelar'}}
+            </button>
+        </div>
+    </div>
+    <div class="divisor100" ></div>
+    <div >
+        <form>
+
+            <div  style="padding-top: 31px; text-align: center;display: flex;
+            justify-content: space-evenly;">
+                <span  (click)="cambiarEstado('iniciar')" nz-icon nzType="caret-right" nzTheme="outline" style="font-size: 25px; color: #4F5479;"></span>
+                <span (click)="cambiarEstado('pausar')" nz-icon nzType="pause-circle" nzTheme="outline" style="font-size: 25px; color: #4F5479;"></span>
+                <span (click)="cambiarEstado('resolver')" nz-icon nzType="check-circle" nzTheme="outline" style="font-size: 25px; color: #4F5479;"></span>
+            </div>
+            <div class="filaWS" style="padding-top: 31px;">
+                <div class="columna1 labelFormulario">
+                    <label >{{'Nombre de tarea'}}</label>
+                </div>
+                <div class="columna2" >
+                    <div  style="display: flex; align-items: center;  position: relative;">
+                        <input [disabled]="true" class="imputFormulario" required [(ngModel)]="detalleTarea.title" [ngModelOptions]="{standalone: true}" placeholder="">
+                    </div>
+                </div>
+            </div>
+
+            <div class="filaWS">
+                <div class="columna1 labelFormulario">
+                    <label >{{'Descripción'}}</label>
+                </div>
+                <div class="columna2">
+                    <div>
+                        <textarea class="imputFormulario" [(ngModel)]="descripcion" name="" id="" cols="30" 
+                        [ngModelOptions]="{standalone: true}" id="description" rows="5" required>
+                        </textarea>
+                    </div>
+                </div>
+            </div>
+
+            <div class="filaWS" style="padding-top: 31px;">
+                <div class="columna1 labelFormulario">
+                    <label >{{'Estado'}}</label>
+                </div>
+                <div class="columna2">
+                    <div 
+                        style="display: flex;    align-items: center;  position: relative;">
+                        <input class="imputFormulario" [disabled]="true" required [(ngModel)]="estado" [ngModelOptions]="{standalone: true}" placeholder="">
+                    </div>
+                </div>
+            </div>
+            <div class="filaWS" style="padding-top: 31px;">
+                <div class="columna1 labelFormulario">
+                    <label >{{'Asignado'}}</label>
+                </div>
+                <div class="columna2">
+                    <div  (click)="modalAsignar($event)"
+                        style="display: flex;    align-items: center;  position: relative;">
+                        <div  [innerHTML]=" asignado | avatar"></div>
+                        <div  [innerHTML]=" asignado"></div>
+                        
+                    </div>
+                </div>
+                <ng-template #popOverUsersAssigned>
+                    <div style="padding: 10px 21px 35px 25px;">
+                        <div style="padding: 20px 5px 15px 5px; display: flex;
+                        justify-content: space-between;">
+                            <span style="color:#4F5479;" class="titulo1" >{{'Asignar'}}</span>
+                            <span (click)="bsModalAssigned.hide()" nz-icon nzType="close-circle" style="font-size: 17px; color: #4F5479;" nzTheme="outline"></span>
+                          
+                        </div>
+                        <div style="height: 32px;
+                        overflow: inherit !important;">
+                            <ng-select class="selectCategory" style="width: 100% !important;" placeholder="Buscar"  [items]="listaUsuarios"
+                            [virtualScroll]="true" [searchable]="true" [closeOnSelect]="false"
+                             [notFoundText]="'Sin resultados'"
+                            (keydown.enter)="advanceUsersSearch($event)"
+                            (click)="placeholderChange()">
+                            <ng-template style="height: 36px;border: none!important;color: inherit!important;
+                            border: 0;
+                            border-radius: inherit;
+                            background-color: inherit;" ng-option-tmp let-item="item" let-index="index" let-search="searchTerm">
+                                <div (click)="asignar(item)">
+                                    <div style="display: flex;">
+                                        <span 
+                                            [innerHtml]="item | avatar"></span>
+                                        <div style="margin-left: 10px;
+                                        margin-top: 7px;">
+                                            <label >{{item}}</label>
+                                                
+                                        </div>
+                                    </div>
+                                </div>
+                            </ng-template>
+                        </ng-select>
+                        </div>
+                    </div>
+                </ng-template>
+            </div>
+
+            <div class="filaWS"  style="padding-top: 31px;">
+                <div class="columna1 labelFormulario" >
+                    <label >{{'Progreso'}}</label>
+                </div>
+                <div class="columna2" >
+                    <div style="display: flex;    align-items: center;  position: relative;">
+                        <input class="imputFormulario" type="number" min="0"  required [(ngModel)]="progreso" [ngModelOptions]="{standalone: true}" placeholder="">
+                    </div>
+                </div>
+            </div>
+
+            <div class="filaWS">
+                <div class="columna1 labelFormulario">
+                    <label >{{'Categoría'}}</label>
+                </div>
+                <div class="columna2" >
+                    <div 
+                        style="display: flex;    align-items: center;  position: relative;">
+                        <ng-select class="selectCategory" [ngModelOptions]="{standalone: true}" [disabled]="true"  [notFoundText]="'Sin datos'"
+                            [clearAllText]="'Clear'" [items]="categoriasLista" 
+                            [(ngModel)]="detalleTarea.categoria" bindLabel="categoriaNombre" [placeholder]="'Seleccionar'"
+                             required></ng-select>
+                    </div>
+                </div>
+            </div>
+
+            <br>
+        </form>
+    </div>
+</div>

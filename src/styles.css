@@ -1,0 +1,122 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import  " ~@ng-select/ng-select/themes/default.theme.css " ;
+
+
+.dx-treelist-text-content{
+    font-family: 'Montserrat', sans-serif;
+    margin: 0px;
+      color: #4F5479;
+      font-size: 11px;
+      font-weight: 600;
+      line-height: 13px;
+      
+  }
+  
+  .dx-treelist-content .dx-treelist-table .dx-row > td, .dx-treelist-content .dx-treelist-table .dx-row > tr > td{
+    font-family: 'Montserrat', sans-serif;
+    margin: 0px;
+      font-size: 11px;
+      font-weight: 200;
+      line-height: 13px;
+     
+      font-size: 11px;
+  }
+  
+  .dx-gantt .dx-gantt-si{
+    
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 11px;
+  }
+  
+  .dx-gantt .dx-gantt-taskWrapper .dx-gantt-titleIn{
+    font-family: 'Montserrat', sans-serif;
+    
+    color: #fff;
+      padding: 0 7px;
+  }
+  
+  dx-gantt .dx-gantt-taskWrapper .dx-gantt-task{
+    background-color: #3399ff !important ;
+  }
+  .dx-gantt .dx-gantt-taskWrapper .dx-gantt-task.dx-gantt-parent{
+    background-color: #5cb85c !important;
+  }
+  
+  .dx-button-text{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 11px;
+    
+  }
+  
+  
+  .dx-cell-focus-disabled{
+        background-color: #cccdd8; 
+  }
+  .dx-treelist-cell-expandable{
+   
+  }
+  
+  .dx-gantt .dx-gantt-taskWrapper .dx-gantt-titleIn{
+    font-family: 'Montserrat', sans-serif;
+    color: #fff;
+    padding: 0 7px;
+    font-weight: 600;
+    font-size: 11px;
+  }
+  
+  .dx-treelist-rowsview .dx-row.dx-row-lines:first-child, .dx-treelist-rowsview .dx-row.dx-row-lines:first-child>td, .dx-treelist-rowsview .dx-row.dx-row-lines:first-child>tr>td{
+    background-color: #c4cfff
+    ;
+  }
+  .dx-gantt-collapsable-row{
+    background-color: #c4cfff !important;
+  }
+
+  .ng-select .ng-select-container .ng-value-container .ng-input>input{
+    -webkit-box-sizing: content-box !important;
+    box-sizing: content-box !important;
+    background: none !important;
+    border: 0 !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    outline: 0 !important;
+    cursor: default !important;
+     width: 100% !important; 
+
+ 
+  }
+  .ng-select .ng-select-container{
+    color: inherit !important;
+    border: 0 !important;
+    border-radius: inherit !important;
+    background-color: inherit !important;
+    left: -8px !important;;
+    width: 103% !important;;
+    /* align-items: center ;
+    border:none !important;
+    background-color:transparent;  
+    min-height: 0px !important;
+    border-radius: 0 ; */
+    
+   
+  }
+  .modal-content {
+    -webkit-box-shadow: 0 5px 15px rgb(0 0 0 / 50%);
+    box-shadow: 0 11px 20px rgb(0 0 0);
+}
+
+  /* .modal-backdrop {
+    --bs-backdrop-bg: #0000008f !important;
+    opacity: .5 !important;
+  }
+  .modal-backdrop.in {
+    /* opacity: .5 !important; */
+    
+.modal-backdrop.show {
+ 
+  opacity: 0 !important;
+}
+ 

@@ -1,0 +1,85 @@
+
+.fontFamilyWS {
+    font-family: 'Montserrat', sans-serif;
+}
+#encabezado{
+    margin: 17px 40px 12px 30px;
+    display: flex;
+}
+#botonesPrincipales,
+#titulosModal{
+    width: 50%;
+    display: flex;
+    align-items: center;
+}
+#botonesPrincipales{
+    justify-content: flex-end;
+}
+.titulo1{
+    color: #333;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 17px;
+}
+.botonesWS{
+    border-radius: 16px;
+    border: 1px solid #4F5479;
+    background: transparent;
+    color: #4F5479;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 15px;
+    padding: 8px 23px;
+}
+.divisor100{
+    width: 100%;
+    border: 1px solid #CCC;
+}
+.filaWS{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding-top: 15px;
+}
+.columna1{
+    padding-right: 27px;
+    width:26%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.columna2{
+    width: 74%;
+}
+.labelFormulario{
+    margin: 0px;
+    color: #4F5479;
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 13px;
+    text-align: right;
+}
+.imputFormulario{
+    margin-right: 50px;
+    border-radius: 16px;
+    background-color: rgba(79,84,121,0.09);
+    color: #4F5479;
+    font-size: 12px;
+    line-height: 15px;
+    padding: 8px 14px;
+    border: none;
+    width: 90%;
+}
+.selectCategory{
+    color: #555555 !important;
+    min-height: 30px !important;
+    padding-left: 7px !important;
+    box-sizing: border-box !important;
+    width: 335px !important;
+    border-radius: 16px !important;
+    border: 1px solid #4F5479 !important;
+  }
+
+
+
+
